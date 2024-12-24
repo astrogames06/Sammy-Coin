@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chunku Coin</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1 id="title">
+        <img id="logo" src="logo.png" alt="logo">
+        Chunku Coin
+    </h1>
+
+    <p style="text-align: center;">
+        VIEW ON DEXSCREENER: <br>
+    </p>
+    <a id="address" href="https://dexscreener.com/solana/9vvzyhyectyjx28huqm1vkfftnz2nzcswinurrxftdss">
+        <p>
+            dogUHLLn2zJtWpUxkcQFgQsNu6NtYb99YGDKcuCNb6D
+        </p>
+    </a>
+
+    <br>
+    <p id="price">Fetching price...</p>
+
+    <script>
+        // Replace with the actual URL of the Dexscreener API or the file containing JSON data
+        const apiUrl = 'https://api.dexscreener.com/latest/dex/tokens/dogUHLLn2zJtWpUxkcQFgQsNu6NtYb99YGDKcuCNb6D';
+
+        // Function to fetch token price from Dexscreener API
+        function fetchTokenPrice() {
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    
+                    
+                    if (data.pairs && data.pairs.length > 0) {
+                        const priceUsd = data.pairs[0].priceUsd; // Extract price in USD
+                        if (priceUsd) {
+                            document.getElementById('price').textContent = `1 $CHUNKU = $${priceUsd} USD`;
+                        } else {
+                            document.getElementById('price').textContent = 'Price information not available.';
+                        }
+                    } else {
+                        document.getElementById('price').textContent = 'Token price data is unavailable.';
+                    }
+                })
+                .catch(() => {
+                    document.getElementById('price').textContent = 'Error fetching token price.';
+                });
+        }
+
+        // Fetch token price when the page loads
+        fetchTokenPrice();
+    </script>
+        
+</body>
+</html>

@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+*
+{
+    margin: 0;
+    border: none;
+    font-family: "Nunito", serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+body
+{
+    background-color: darkgray;
+}
+
+#title
+{
+    text-align: center;
+}
+
+#logo
+{
+    width: 50px;
+}
+
+#address
+{
+    text-align: center;
+}
+
+#price
+{
+    text-align: center;
+}
